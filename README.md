@@ -256,13 +256,7 @@ Usage :
 
 **Vidéo de démonstration** (max. 10 min) : *[👉 lien à insérer ici après enregistrement]*
 
-**Plan suggéré pour la vidéo :**
-1. Présentation rapide du projet et de l'architecture (1 min)
-2. Démonstration `DICO` — cas trouvé et non trouvé (2 min)
-3. Démonstration `BRUTE` — barre de progression, mot court puis mot de 4 lettres (3 min)
-4. Démonstration `-d` avec un dictionnaire personnalisé (1 min)
-5. Démonstration de la gestion des erreurs (arguments invalides) (1 min)
-6. Survol rapide du code : `HashCrackerFactory` et `Main` (2 min)
+
 
 ## 8. Difficultés rencontrées
 
