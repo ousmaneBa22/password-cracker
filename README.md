@@ -4,7 +4,6 @@
 Outil en ligne de commande permettant de retrouver un mot de passe en clair à partir de son empreinte MD5, par attaque **dictionnaire** ou **force brute**.
 
 ![Java](https://img.shields.io/badge/Java-17%2B-orange)
-![Maven](https://img.shields.io/badge/build-Maven-blue)
 ![Pattern](https://img.shields.io/badge/design%20pattern-Simple%20Factory-green)
 
 ---
@@ -153,28 +152,22 @@ public class HashCrackerFactory {
 
 ### Prérequis
 
-- **JDK 17** ou supérieur
-- **Maven 3.8+** (optionnel — le projet peut aussi être compilé avec `javac` seul, sans dépendance externe)
+- **JDK 17** ou supérieur (aucune dépendance externe requise, aucun outil de build tiers nécessaire)
+- Vérifier l'installation : `javac -version` doit afficher un numéro de version
 
-### Option A — avec Maven
+### Compilation et exécution (invite de commandes Windows `cmd`)
 
-```bash
-git clone https://github.com/<votre-compte>/password-cracker.git
+```cmd
+git clone https://github.com/OusmaneBa22/password-cracker.git
 cd password-cracker
-mvn clean package
-java -jar target/passwordCracker.jar -m DICO -h 5ebe2294ecd0e0f08eab7690d2a6ee69
-```
-
-### Option B — avec javac uniquement (aucune dépendance)
-
-```bash
-cd password-cracker
-mkdir -p out
-find src/main/java -name "*.java" > sources.txt
+mkdir out
+dir /s /b src\main\java\*.java > sources.txt
 javac -d out -encoding UTF-8 @sources.txt
-cp src/main/resources/dictionnaire.txt out/
+copy src\main\resources\dictionnaire.txt out\
 java -cp out com.passwordcracker.Main -m DICO -h 5ebe2294ecd0e0f08eab7690d2a6ee69
 ```
+
+> **Prérequis :** le JDK doit être installé et son dossier `bin` ajouté au `PATH` (vérifier avec `javac -version`). Voir [Adoptium Temurin](https://adoptium.net/fr/temurin/releases/) pour l'installateur. Pour un affichage correct des couleurs et accents dans la console, exécuter `chcp 65001` avant de lancer le programme.
 
 ### Syntaxe complète
 
@@ -190,10 +183,12 @@ passwordCracker -m <BRUTE|DICO> -h <hashMD5> [-d <dictionnaire_externe.txt>]
 
 ## 7. Résultats obtenus
 
+> *Note : la bannière d'accueil (`PasswordCracker v1.0`) s'affiche systématiquement au lancement du programme ; elle est omise ci-dessous pour la lisibilité des exemples.*
+
 ### Exemple 1 — Cassage par dictionnaire (succès)
 
 ```
-$ java -jar passwordCracker.jar -m DICO -h 5ebe2294ecd0e0f08eab7690d2a6ee69
+C:\password-cracker>java -cp out com.passwordcracker.Main -m DICO -h 5ebe2294ecd0e0f08eab7690d2a6ee69
 
 ╔═══════════════════════════════════════╗
 ║         PasswordCracker v1.0           ║
@@ -215,7 +210,7 @@ Dictionnaire chargé : 50 mot(s) à tester.
 ### Exemple 2 — Cassage par force brute (succès, mot de 4 lettres)
 
 ```
-$ java -jar passwordCracker.jar -m BRUTE -h 098f6bcd4621d373cade4e832627b4f6
+C:\password-cracker>java -cp out com.passwordcracker.Main -m BRUTE -h 098f6bcd4621d373cade4e832627b4f6
 
 Espace de recherche : 475254 combinaisons possibles (alphabet a-z, longueur 1 à 4).
 [======================>       ]  74.78%  (355,414 / 475,254 tentatives)
@@ -230,7 +225,7 @@ Espace de recherche : 475254 combinaisons possibles (alphabet a-z, longueur 1 à
 ### Exemple 3 — Mot de passe introuvable
 
 ```
-$ java -jar passwordCracker.jar -m DICO -h 5b0afe3298130d87ceeee028ee6c104e
+C:\password-cracker>java -cp out com.passwordcracker.Main -m DICO -h 5b0afe3298130d87ceeee028ee6c104e
 
 Dictionnaire chargé : 50 mot(s) à tester.
 
@@ -244,7 +239,7 @@ Dictionnaire chargé : 50 mot(s) à tester.
 ### Exemple 4 — Validation des arguments
 
 ```
-$ java -jar passwordCracker.jar -m FOO -h abc
+C:\password-cracker>java -cp out com.passwordcracker.Main -m FOO -h abc
 
 Erreur d'arguments : Méthode invalide 'FOO'. Valeurs attendues : DICO ou BRUTE.
 
@@ -254,9 +249,9 @@ Usage :
 
 *Tous ces scénarios ont été exécutés et vérifiés lors du développement du projet.*
 
-**Vidéo de démonstration** (max. 10 min) : *[👉 lien à insérer ici après enregistrement]*
+**Campagne de tests complète (11 scénarios, checklist et résultats détaillés) : voir [TESTS.md](TESTS.md).**
 
-
+**Vidéo de démonstration**  : *[ lien à insérer ici après ]*
 
 ## 8. Difficultés rencontrées
 
@@ -312,7 +307,7 @@ C'est précisément la limite annoncée dans l'énoncé du mini-projet : *"l'ajo
 ```
 password-cracker/
 ├── README.md
-├── pom.xml
+├── TESTS.md
 ├── dictionnaire.txt                          # Exemple de dictionnaire externe
 └── src/main/
     ├── java/com/passwordcracker/
