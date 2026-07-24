@@ -251,7 +251,7 @@ Usage :
 
 **Campagne de tests complète (11 scénarios, checklist et résultats détaillés) : voir [TESTS.md](TESTS.md).**
 
-**Vidéo de démonstration**  : *[ lien à insérer ici après ]*
+**Vidéo de démonstration**  : https://drive.google.com/drive/folders/19bahX1kuc9jWZQqSMb1h4fF-s9Zk2d_a
 
 ## 8. Difficultés rencontrées
 

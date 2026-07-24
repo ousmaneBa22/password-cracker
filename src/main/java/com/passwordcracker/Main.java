@@ -12,11 +12,13 @@ import java.util.Map;
  * Point d'entrée en ligne de commande de l'application {@code passwordCracker}.
  * <p>
  * Responsabilités de cette classe (et uniquement celles-ci) :
+ * </p>
  * <ul>
  *     <li>parser et valider les arguments de la ligne de commande ;</li>
  *     <li>déléguer la création de la stratégie de cassage à {@link HashCrackerFactory} ;</li>
  *     <li>orchestrer l'exécution (mesure du temps, affichage du résultat).</li>
  * </ul>
+ * <p>
  * Conformément aux contraintes du projet, <b>aucune classe concrète de
  * stratégie n'est instanciée ici</b> : seule la fabrique est utilisée.
  * </p>
